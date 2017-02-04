@@ -7,7 +7,7 @@
   <link href='style.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
-  <h1>Earthquake Tracker</h1>
+  <h1 style="text-align:center; font-family:Verdana;">Earthquake Tracker</h1>
   <div id="map" style="width:100%;height:600px;"></div>
       <script>
         var map;
@@ -26,6 +26,7 @@
           document.getElementsByTagName('head')[0].appendChild(script);
         }
 
+
         // Loop through the results array and place a marker for each
         // set of coordinates.
         window.eqfeed_callback = function(results) {
@@ -34,8 +35,18 @@
             var latLng = new google.maps.LatLng(coords[1],coords[0]);
             var marker = new google.maps.Marker({
               position: latLng,
-              map: map
+              icon: {
+                  path: google.maps.SymbolPath.CIRCLE,
+                  fillOpacity: 0.2,
+                  fillColor: '#ff0000',
+                  strokeOpacity: 0.8,
+                  strokeColor: '#ff0000',
+                  strokeWeight: 2.0,
+                  scale: 20,
+                },
+                map: map,
             });
+
           }
         }
       </script>
@@ -43,48 +54,49 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj-gaooYsZqP5R4-kRpvkv-yvCTHptHjo&callback=initMap">
       </script>
 
-  <!-- <div id="googleMap" style="width:100%;height:600px;"></div>
+  <!--
+  // <div id="googleMap" style="width:100%;height:600px;"></div>
+  //
+  // <script>
+  // function myMap() {
+  //   var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+  //   var mapCanvas = document.getElementById("googleMap");
+  //   var mapOptions = {center: myCenter, zoom: 6};
+  //   var map = new google.maps.Map(mapCanvas, mapOptions);
+  //   var myCity = new google.maps.Circle({
+  //     center: myCenter,
+  //     radius: 50000,
+  //     strokeColor: "#FF0000",
+  //     strokeOpacity: 0.8,
+  //     strokeWeight: 2,
+  //     fillColor: "#FF0000",
+  //     fillOpacity: 0.4
+  // });
+  // map.data.addGeoJson('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson');
+  //
+  // myCity.setMap(map);
+  //
+  //
+  // // animation
+  // var direction = 1;
+  // var rMin = 200, rMax = 50000;
+  //
+  // setInterval(function() {
+  //     var radius = myCity.getRadius();
+  //     if ((radius > rMax) || (radius < rMin)) {
+  //         direction *= -1;
+  //     }
+  //     myCity.setRadius(radius + direction * 100);
+  // }, 5); -->
 
-  <script>
-  function myMap() {
-    var myCenter = new google.maps.LatLng(51.508742,-0.120850);
-    var mapCanvas = document.getElementById("googleMap");
-    var mapOptions = {center: myCenter, zoom: 6};
-    var map = new google.maps.Map(mapCanvas, mapOptions);
-    var myCity = new google.maps.Circle({
-      center: myCenter,
-      radius: 50000,
-      strokeColor: "#FF0000",
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: "#FF0000",
-      fillOpacity: 0.4
-  });
-  map.data.addGeoJson('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson');
-
-  myCity.setMap(map);
 
 
-  // animation
-  var direction = 1;
-  var rMin = 200, rMax = 50000;
-
-  setInterval(function() {
-      var radius = myCity.getRadius();
-      if ((radius > rMax) || (radius < rMin)) {
-          direction *= -1;
-      }
-      myCity.setRadius(radius + direction * 100);
-  }, 5); -->
-
-
-
-
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-
-  <script src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson"></script>
-
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-  <script src='script.js'></script> -->
+  //
+  // <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+  //
+  // <script src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson"></script>
+  //
+  // <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  // <script src='script.js'></script> -->
 </body>
 </html>
